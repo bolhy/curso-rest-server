@@ -14,7 +14,7 @@ api.get('/usuario', function(req, res) {
     let limite = req.query.limite || 5;
     limite = Number(limite);
 
-    Usuario.find({ estado: false })
+    Usuario.find({})
         .skip(desde)
         .limit(limite)
         .exec((err, usuarios) => {

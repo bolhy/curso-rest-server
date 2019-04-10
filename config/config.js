@@ -14,3 +14,7 @@ if (process.env.NODE_ENV === 'dev') {
 }
 
 process.env.URLDB = urlDB
+
+/* VARIABLES DE AUTENTICACION */
+process.env.CADUCIDAD = 60 * 60
+process.env.SEED = process.env.SEED || 'este-es-el-secret'

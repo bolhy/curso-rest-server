@@ -51,21 +51,18 @@ api.post('/usuario', [verificarToken, verificarAdmin], (req, res) => {
         role: body.role
     });
 
-    usuario.save((err, usuarioDB) => {
+    return res.json(usuario)
 
-        if (err) {
-            return res.status(400).json({
-                ok: false,
-                err
-            });
-        }
-
-
-        res.json({
+    usuario.save().then(usuarioDB => {
+        return res.json({
             ok: true,
             usuario: usuarioDB
         })
-
+    }).catch(err => {
+        return res.status(400).json({
+            ok: false,
+            err
+        });
     })
 
 })
